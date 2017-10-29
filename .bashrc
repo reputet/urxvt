@@ -8,7 +8,7 @@
 # Defined by me
 ###############
 
-# Colooured man
+# Coloured man
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
     LESS_TERMCAP_me=$'\e[0m' \
@@ -24,4 +24,14 @@ alias ls='ls --color=auto'
 alias grep='grep --colou=auto'
 #PS1='[\u@\h \W]\$ '
 PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;35m\]@\[\e[1;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[0m\]\$ "
-screenfetch
+
+# show system info after terminal starts
+# screenfetch
+
+# Use ssh agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
