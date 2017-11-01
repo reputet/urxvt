@@ -8,7 +8,7 @@
 # Defined by me
 ###############
 
-# Coloured man
+# Colooured man
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
     LESS_TERMCAP_me=$'\e[0m' \
@@ -18,6 +18,8 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
+
+export EDITOR=vim
 
 export COLOR_NC='\e[0m' # No Color
 export COLOR_WHITE='\e[1;37m'
@@ -40,10 +42,9 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 alias ls='ls --color=auto'
 alias grep='grep --colou=auto'
 
-PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;35m\]@\[\e[1;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[0m\]\$ "
+windows_SHARE="$HOME/VirtualBox_share/windows10/"
 
-# show system info after terminal starts
-# screenfetch
+PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;31m\]@\[\e[0;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[1;32m\]\$\[\e[0m\] "
 
 # Use ssh agent
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
@@ -53,5 +54,4 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-thing)"
 fi
 
-# Set dircolors
 eval "$(dircolors /etc/DIR_COLORS)"
