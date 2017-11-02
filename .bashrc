@@ -42,6 +42,10 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 alias ls='ls --color=auto'
 alias grep='grep --colou=auto'
 
+# Connect to a host WITHOUT authenticity check and WITHOUT adding its 
+# IP address to the ~/.ssh/known_hosts
+alias sssh='ssh -o "UserKnownHostsFile /dev/null" -o "StrictHostKeyChecking no"'
+
 windows_SHARE="$HOME/VirtualBox_share/windows10/"
 
 PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;31m\]@\[\e[0;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[1;32m\]\$\[\e[0m\] "
