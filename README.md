@@ -1,2 +1,2 @@
 # urxvt
-Repository for storing config
+Repository for storing configs
