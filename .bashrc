@@ -59,3 +59,20 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 fi
 
 eval "$(dircolors /etc/DIR_COLORS)"
+
+# Docker commands
+
+# remove all containers exclude the last one
+function docrm {
+    docker rm -f $(docker ps -a | awk '{ print $1 }' | sed 1d | sed '$d')
+}
+
+# execute container in current shell
+function docexec {
+    docker exec -it $1 bash
+}
+
+# remove images without a name (<none>)
+function docrmi {
+    docker rmi $(docker images | grep '<none>' | awk '{ print $3 }')
+}
