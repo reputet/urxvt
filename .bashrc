@@ -5,10 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+###################################################
 # Defined by me
-###############
+###################################################
 
-# Colooured man
+# Coloured man
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
     LESS_TERMCAP_me=$'\e[0m' \
@@ -39,6 +40,8 @@ export COLOR_YELLOW='\e[1;33m'
 export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 
+PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;31m\]@\[\e[0;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[1;32m\]\$\[\e[0m\] "
+
 alias ls='ls --color=auto'
 alias grep='grep --colou=auto'
 
@@ -47,8 +50,6 @@ alias grep='grep --colou=auto'
 alias sssh='ssh -o "UserKnownHostsFile /dev/null" -o "StrictHostKeyChecking no"'
 
 windows_SHARE="$HOME/VirtualBox_share/windows10/"
-
-PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;31m\]@\[\e[0;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[1;32m\]\$\[\e[0m\] "
 
 # Use ssh agent
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
@@ -62,11 +63,6 @@ eval "$(dircolors /etc/DIR_COLORS)"
 
 # Docker commands
 
-# remove all containers exclude the last one
-function docrm {
-    docker rm -f $(docker ps -a | awk '{ print $1 }' | sed 1d | sed '$d')
-}
-
 # execute container in current shell
 function docexec {
     docker exec -it $1 bash
@@ -76,3 +72,27 @@ function docexec {
 function docrmi {
     docker rmi $(docker images | grep '<none>' | awk '{ print $3 }')
 }
+
+###################################################
+# Useful ssh commands:
+###################################################
+
+# Generate new ssh key pair
+# ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+# https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+
+# Print an OpenSSH public key to stdout from PEM private key
+# ssh-keygen -y -f key.pem
+
+# Print fingerprint from public or private key using SHA256 hash
+# ssh-keygen -l -f key (key.pub)
+# 4096 SHA256:ECzbwYZnzzdfyMFa26T0IEUJd86segPC4NB1Q7R/kt4 no comment (RSA)
+
+# Print fingerprint from public or private key using MD5 hash
+# ssh-keygen -l -E md5 -f key.pub
+# 4096 MD5:f1:6e:c2:4f:8e:af:5a:3f:19:c0:f0:c2:d2:ca:92:ee no comment (RSA)
+
+# ssh-keygen -e -f unix -m [RFC4716 | PKCS8 | PEM]
+# RFC4716 (defalt) - RFC 4716/SSH2 public or private key
+# PKCS8 - PEM PKCS8 public key
+# PEM - PEM public key
