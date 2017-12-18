@@ -168,7 +168,7 @@ bindsym $mod+minus scratchpad show
 # Show the sup-mail scratchpad window, if any.
 bindsym $mod+Shift+m [title="^Sup ::"] scratchpad show
 
-# Jump to next/previous workspace by numbering 
+# Jump to next/previous workspace by numbering
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
 
@@ -183,6 +183,12 @@ bindsym $mod+Control+L exec xscreensaver-command --lock
 
 # Open terminal after starting i3wm
 exec urxvt
+
+# Take screenshot
+bindsym Print exec deepin-screenshot
+
+# Select screenshot and put it to a selection CLIPBOARD
+bindsym Control+Print exec "maim -s | xclip -selection clipboard -t image/png"
 
 # Force floating for all new windows
 # You can use xprop command following by mouse click to know name of application class

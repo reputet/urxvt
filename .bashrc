@@ -5,20 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-###################################################
+#=========================================================================
 # Defined by me
-###################################################
-
-# Coloured man
-man() {
-    LESS_TERMCAP_md=$'\e[01;31m' \
-    LESS_TERMCAP_me=$'\e[0m' \
-    LESS_TERMCAP_se=$'\e[0m' \
-    LESS_TERMCAP_so=$'\e[01;44;33m' \
-    LESS_TERMCAP_ue=$'\e[0m' \
-    LESS_TERMCAP_us=$'\e[01;32m' \
-    command man "$@"
-}
+#=========================================================================
 
 export EDITOR=vim
 
@@ -42,26 +31,39 @@ export COLOR_LIGHT_GRAY='\e[0;37m'
 
 PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;31m\]@\[\e[0;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[1;32m\]\$\[\e[0m\] "
 
+# Set dircolors
+eval "$(dircolors /etc/DIR_COLORS)"
+
+# Coloured man
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
+}
+
+
+
+#-------------------------------------------------------------
+# Aliases and functions
+#-------------------------------------------------------------
+
 alias ls='ls --color=auto'
 alias grep='grep --colou=auto'
 
-# Connect to a host WITHOUT authenticity check and WITHOUT adding its 
+# Connect to a host WITHOUT authenticity check and WITHOUT adding its
 # IP address to the ~/.ssh/known_hosts
 alias sssh='ssh -o "UserKnownHostsFile /dev/null" -o "StrictHostKeyChecking no"'
 
-windows_SHARE="$HOME/VirtualBox_share/windows10/"
+# Select screenshot and put it to a selection CLIPBOARD
+alias take_screenshot='maim -s | xclip -selection clipboard -t image/png'
 
-# Use ssh agent
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-fi
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(<~/.ssh-agent-thing)"
-fi
-
-eval "$(dircolors /etc/DIR_COLORS)"
-
+#-----------------
 # Docker commands
+#-----------------
 
 # execute container in current shell
 function docexec {
@@ -73,9 +75,24 @@ function docrmi {
     docker rmi $(docker images | grep '<none>' | awk '{ print $3 }')
 }
 
-###################################################
+
+
+# Shared folder
+windows_SHARE="$HOME/VirtualBox_share/windows10/"
+
+# Use ssh agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
+
+
+
+#=========================================================================
 # Useful ssh commands:
-###################################################
+#=========================================================================
 
 # Generate new ssh key pair
 # ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
