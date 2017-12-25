@@ -1,28 +1,41 @@
 ! to match gnome-terminal "Linux console" scheme
+
 ! foreground/background
 URxvt*background: #404040
 URxvt*foreground: #ffffff
+
 ! black
 URxvt.color0  : #000000
 URxvt.color8  : #555555
+
 ! red
-URxvt.color1  : #AA0000
+!URxvt.color1  : #AA0000
+!URxvt.color9  : #FF5555
+URxvt.color1  : #D84141
 URxvt.color9  : #FF5555
+
 ! green
+!URxvt.color2  : #00AA00
+!URxvt.color10 : #55FF55
 URxvt.color2  : #00AA00
-URxvt.color10 : #55FF55
+URxvt.color10 : #4CE34C
+
 ! yellow
 URxvt.color3  : #AA5500
 URxvt.color11 : #FFFF55
+
 ! blue
-URxvt.color4  : #0000AA
-URxvt.color12 : #5555FF
+URxvt.color4  : #5555FF
+URxvt.color12 : #5F96FF
+
 ! magenta
 URxvt.color5  : #AA00AA
 URxvt.color13 : #FF55FF
+
 ! cyan
 URxvt.color6  : #00AAAA
 URxvt.color14 : #55FFFF
+
 ! white
 URxvt.color7  : #AAAAAA
 URxvt.color15 : #FFFFFF
@@ -38,16 +51,22 @@ URxvt*boldItalicFont: xft:Monospace:boldItalic:pixelsize=16
 URxvt*letterSpace: -1
 
 ! Changing font size on the fly and enabling clibpoard from console
-URxvt.perl-ext-common:  ...,resize-font,selection-to-clipboard,...
-
-! Perl clipboard
-! URxvt.perl-ext-common: ...,selection-to-clipboard,...
+URxvt.perl-ext-common: resize-font,selection-to-clipboard
 
 ! Disable scrollback buffer in secondary screen
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 
-! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
-URxvt*scrollWithBuffer: false
+! Scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
 
+! Disable scrollbar
 URxvt.scrollBar: false
+
+! Some general settings that I do not remember where I have got it
+Xft.antialias: 1
+Xft.dpi: 96
+Xft.hinting: 1
+Xft.hintstyle: hintnone
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
