@@ -195,6 +195,10 @@ bindsym $mod+Shift+m [title="^Sup ::"] scratchpad show
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
 
+# Move workspace and all windows to other screens
+bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Shift+bracketleft move workspace to output left
+
 # Toggle (jump) to last/current workspace
 bindsym $mod+Escape workspace back_and_forth
 
