@@ -130,3 +130,20 @@ fi
 
 # xev - show keyboard pressed keys
 # xprop - show information about X client (window)
+
+# Generate strong password 15 characters long
+# pwgen -cnsy 15 1
+    # -c, --capitalize
+    #        Don't bother to include any capital letters in the generated passwords.
+    #
+    # -n, --numerals
+    #        Include at least one number in the password.  This is the default if the standard output is a tty device.
+    #
+    # -s, --secure
+    #        Generate  completely random, hard-to-memorize passwords.  These should
+    #        only be used for machine passwords, since otherwise it's almost
+    #        guaranteed that users will simply write the password on a piece of paper
+    #        taped to the monitor...
+    #
+    # -y, --symbols
+    #        Include at least one special character in the password.
