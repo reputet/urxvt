@@ -29,7 +29,7 @@ export COLOR_YELLOW='\e[1;33m'
 export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 
-PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;31m\]@\[\e[0;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[1;32m\]\$\[\e[0m\] "
+PS1="\[\e[1;31m\][\[\e[1;32m\]\u\[\e[1;31m\]@\[\e[0;32m\]\h\[\e[1;31m\]:\[\e[1;34m\]\w\[\e[1;31m\]]\[\e[1;32m\]\\$\[\e[0m\] "
 
 # Set dircolors
 eval "$(dircolors /etc/DIR_COLORS)"
@@ -53,6 +53,7 @@ man() {
 
 alias ls='ls --color=auto'
 alias grep='grep --colou=auto'
+alias prettyjson='python -m json.tool'
 
 # Connect to a host WITHOUT authenticity check and WITHOUT adding its
 # IP address to the ~/.ssh/known_hosts
