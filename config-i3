@@ -142,7 +142,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit
+# shortcut. Do you really want to exit i3?
+# This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+e exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
@@ -206,7 +208,12 @@ bindsym $mod+Escape workspace back_and_forth
 bindsym $mod+Shift+Escape move container to workspace back_and_forth
 
 # Lock screen
-bindsym $mod+Control+L exec xscreensaver-command --lock
+# Change keyboard layout to "us" before screen locking and after 0.5 second
+# enable layout switching by pressing "Caps" button.
+# This time interval is necessary because the commands are executed in parallel
+# mode and the second execution of "setxkbmap" does not have time to be applied
+# without delay
+bindsym $mod+Control+L exec "setxkbmap -layout us"; exec xscreensaver-command --lock; exec "sleep 0.5; setxkbmap -layout us,ru -option grp:caps_toggle"
 
 # Open terminal after starting i3wm
 exec urxvt
@@ -221,3 +228,9 @@ bindsym Control+Print exec "maim -s | xclip -selection clipboard -t image/png"
 # You can use xprop command following by mouse click to know name of application class
 #for_window [class="[.]*"] floating enable
 #for_window [class="VirtualBox"] floating disable
+
+# bindsym $mod+x fullscreen toggle global
+# bindsym $mod+x exec urxvt -name foo bar
+# for_window [class="urxvt"] floating enable
+
+# for_window [class="URxvt"] border pixel 3
