@@ -54,6 +54,7 @@ man() {
 alias ls='ls --color=auto'
 alias grep='grep --colou=auto'
 alias prettyjson='python -m json.tool'
+alias less='less -M'
 
 # Connect to a host WITHOUT authenticity check and WITHOUT adding its
 # IP address to the ~/.ssh/known_hosts
