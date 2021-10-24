@@ -1,0 +1,20 @@
+config:
+  backup: false
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  f_vimrc:
+    src: neovim/.vimrc
+    dst: ~/.vimrc
+  f_init_vim:
+    src: neovim/init.vim
+    dst: ~/.config/nvim/init.vim
+  f_ginit_vim:
+    src: neovim/ginit.vim
+    dst: ~/.config/nvim/ginit.vim
+profiles:
+  linux:
+    dotfiles:
+    - f_vimrc
+    - f_init_vim
+    - f_ginit_vim
