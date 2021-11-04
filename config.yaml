@@ -4,7 +4,7 @@ config:
   dotpath: dotfiles
 dotfiles:
   f_vimrc:
-    src: neovim/.vimrc
+    src: vimrc
     dst: ~/.vimrc
   f_init_vim:
     src: neovim/init.vim
@@ -12,9 +12,17 @@ dotfiles:
   f_ginit_vim:
     src: neovim/ginit.vim
     dst: ~/.config/nvim/ginit.vim
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+  f_alacritty.yml:
+    src: config/alacritty/alacritty.yml
+    dst: ~/.config/alacritty/alacritty.yml
 profiles:
   linux:
     dotfiles:
     - f_vimrc
     - f_init_vim
     - f_ginit_vim
+    - f_bashrc
+    - f_alacritty.yml

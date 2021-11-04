@@ -37,7 +37,6 @@ Plug 'tpope/vim-surround'
 " Plug 'vim-scripts/Smooth-Scroll'
 " Plug 'yuttie/comfortable-motion.vim'
 " Related to use_local_scrolloff variable
-Plug 'karb94/neoscroll.nvim'
 
 " Nerd commenter
 Plug 'scrooloose/nerdcommenter'
@@ -49,60 +48,23 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" ----------------------
-" Pluins added to neovim
-
-" If you don't have nodejs and yarn
-" use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
-" see: https://github.com/iamcco/markdown-preview.nvim/issues/50
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
 " Vim markdown syntax
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-
-" Neovim which-key.nvim
-Plug 'folke/which-key.nvim'
 
 
 " vim-which-key
 " Plug 'liuchengxu/vim-which-key'
 " nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neovim/nvim-lspconfig'
-
 " Easy search
 " Plug 'justinmk/vim-sneak'
-
-" Auto close brackets
-"Plug 'jiangmiao/auto-pairs'
-Plug 'windwp/nvim-autopairs'
-
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" FIX: deside which colorize rainbow plugin to use
-" TODO: enable tree sitter syntax highlight versus main highlight? Shoul all
-" the languages be compiled separately?
-" TODO: groovy auto pair
-" TODO: autocmd goory/Jenkinsfile filetype
-" Colorize parances
-Plug 'p00f/nvim-ts-rainbow' "Tree sitter
-" Plug 'luochen1990/rainbow'
-" let g:rainbow_active = 1
-
-" Color hex codes
-Plug 'norcalli/nvim-colorizer.lua'
 
 " File tree
 Plug 'preservim/nerdtree'
 
 " Format a file
 Plug 'sbdchd/neoformat'
-
-" Show indent lines
-Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Add a Nord theme
 Plug 'arcticicestudio/nord-vim'
@@ -121,66 +83,108 @@ Plug 'mbbill/undotree'
 " Ctrl-p finder
 " Plug 'ctrlpvim/ctrlp.vim'
 
-" telescope.nvim
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
 " Run commands quickly
 Plug 'thinca/vim-quickrun'
 
 " Magit
 " Plug 'TimUntersberger/neogit'
 
-" Easymotion/acejump/easyjomp/ivy for neovim
-Plug 'phaazon/hop.nvim'
+" ----------------------
+" Pluins added to neovim
 
-" TODO: File tree written in Lua
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-" Plug 'kyazdani42/nvim-tree.lua'
+if has('nvim')
 
-" Check nvim-compe: completion Lua based extension
-Plug 'hrsh7th/nvim-compe'
+  " TODO: File tree written in Lua
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  " Plug 'kyazdani42/nvim-tree.lua'
 
-" TODO-commends:
-Plug 'nvim-lua/plenary.nvim'
-Plug 'folke/todo-comments.nvim'
+  " Check nvim-compe: completion Lua based extension
+  Plug 'hrsh7th/nvim-compe'
 
-" Add pictograms in completion
-Plug 'onsails/lspkind-nvim'
+  " TODO-commends:
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'folke/todo-comments.nvim'
 
-" Zen-mode
-Plug 'folke/zen-mode.nvim'
-Plug 'Pocco81/TrueZen.nvim'
+  " Add pictograms in completion
+  Plug 'onsails/lspkind-nvim'
 
-" Grub buddy theme by tj
-" https://github.com/tjdevries/gruvbuddy.nvim
-Plug 'tjdevries/colorbuddy.vim'
-Plug 'tjdevries/gruvbuddy.nvim'
+  " Easymotion/acejump/easyjomp/ivy for neovim
+  Plug 'phaazon/hop.nvim'
 
-" Default grubbox theme
-Plug 'rktjmp/lush.nvim'
-Plug 'npxbr/gruvbox.nvim'
+  " Show indent lines
+  Plug 'lukas-reineke/indent-blankline.nvim'
 
-" Telescope projectile
-Plug 'nvim-telescope/telescope-project.nvim'
+  " FIX: deside which colorize rainbow plugin to use
+  " TODO: enable tree sitter syntax highlight versus main highlight? Shoul all
+  " the languages be compiled separately?
+  " TODO: groovy auto pair
+  " TODO: autocmd goory/Jenkinsfile filetype
+  " Colorize parances
+  Plug 'p00f/nvim-ts-rainbow' "Tree sitter
+  " Plug 'luochen1990/rainbow'
+  " let g:rainbow_active = 1
 
-" nvim-lspinstall
-" TODO: Windows doesn't work (/usr/bin/env not found)
-Plug 'kabouzeid/nvim-lspinstall'
+  " Color hex codes
+  Plug 'norcalli/nvim-colorizer.lua'
+
+  " Auto close brackets
+  "Plug 'jiangmiao/auto-pairs'
+  Plug 'windwp/nvim-autopairs'
+
+  " Treesitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neovim/nvim-lspconfig'
+
+  " Neovim which-key.nvim
+  Plug 'folke/which-key.nvim'
+
+  " If you don't have nodejs and yarn
+  " use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
+  " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+  Plug 'karb94/neoscroll.nvim'
+
+  " telescope.nvim
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+
+  " Zen-mode
+  Plug 'folke/zen-mode.nvim'
+  Plug 'Pocco81/TrueZen.nvim'
+
+  " Telescope projectile
+  Plug 'nvim-telescope/telescope-project.nvim'
+
+  " Grub buddy theme by tj
+  " https://github.com/tjdevries/gruvbuddy.nvim
+  Plug 'tjdevries/colorbuddy.vim'
+  Plug 'tjdevries/gruvbuddy.nvim'
+
+  " Default grubbox theme
+  Plug 'rktjmp/lush.nvim'
+  Plug 'npxbr/gruvbox.nvim'
+
+  " nvim-lspinstall
+  " TODO: Windows doesn't work (/usr/bin/env not found)
+  Plug 'kabouzeid/nvim-lspinstall'
+
+  " Add lua REPL
+  " TODO: do I need this?
+  Plug 'bfredl/nvim-luadev'
+  "
+  " " Add lua runner
+  " Plug 'tjdevries/nlua.nvim'
+
+  " Add lua pad
+  " Plug 'rafcamlet/nvim-luapad'
+end
 
 " Add sane commands to manipulate files (Delete,Rename,Move)
 Plug 'tpope/vim-eunuch'
-
-" Add lua REPL
-" TODO: do I need this?
-Plug 'bfredl/nvim-luadev'
-"
-" " Add lua runner
-" Plug 'tjdevries/nlua.nvim'
-
-" Add lua pad
-" Plug 'rafcamlet/nvim-luapad'
 
 "Add csv support
 Plug 'chrisbra/csv.vim'
@@ -198,6 +202,7 @@ set numberwidth=4              " set width of numbers 4 spaces
 set colorcolumn=80             " show vertical line
 syntax on                      " use syntax highlight
 set mouse=a                    " use mouse
+" foobar
 colorscheme nord                " color scheme
 set clipboard=unnamedplus      " use system clipboard by default
 
@@ -421,16 +426,18 @@ nnoremap <leader>d :DiffSaved<cr>
 " Disable highlight after a search
 nnoremap <silent> <F3> :noh<cr>
 
-" LSP config (the mappings used in the default file don't quite work right)
-" https://www.chrisatmachine.com/Neovim/27-native-lsp/
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+if has('nvim')
+  " LSP config (the mappings used in the default file don't quite work right)
+  " https://www.chrisatmachine.com/Neovim/27-native-lsp/
+  nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+  nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+end
 
 " Emacs-like quickfix keybindings
 autocmd FileType qf nnoremap <buffer> <C-n> <cmd>cnext<cr><C-w><C-p>
